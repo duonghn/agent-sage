@@ -15,8 +15,13 @@ ollama serve
 
 ## Models & Tool Support
 
-- **Tool Support** = Model can invoke functions (Read/Edit/Write files automatically)
+Model can have supports like Tool or Vision
+
+- **Tool** = Model can invoke functions (Read/Edit/Write files automatically), is usable in VSCode
 - **Vision** = Model can analyze images
+
+There are large and small models, for testing:
+
 - **Mistral (7B)**: Has tools, lightweight, smooth on M2 ✅
 - **CodeLlama (13B)**: Better tool support than Mistral, middle ground between Mistral and Gemma
 - **Gemma (26B)**: Has tools + vision, but maxes M2 GPU (100%), hallucinations ❌
@@ -24,13 +29,15 @@ ollama serve
 
 ## Infrastructure
 
-- **Claude API** = Needs login, uses claude.ai
-- **Bedrock (AWS)** = CLI only, uses AWS credentials (`aws sso login`)
-- **Local Ollama** = Free, private, local models at `http://localhost:11434`
+I tried 2 from 3 available environments:
+
+- Official **Claude API** = uses claude.ai, pay token
+- Internal likely Cloud (infos won't be shared), **Bedrock (AWS)**, uses AWS credentials, pay token
+- Private hosted **Ollama**, opensource, hosted at `http://localhost:11434`, no pay, just your time and passion
 
 ## ⚠️ Important Note
 
 **Terminal performance is good, but VSCode Chat with Ollama sucks:**
 
-- Tool invocation is unreliable in VSCode
+- Tool invocation is unreliable in VSCode for private hosting
 - Use terminal/CLI instead for consistent tool use
