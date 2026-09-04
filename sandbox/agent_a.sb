@@ -1,0 +1,15 @@
+(version 1)
+(allow default)
+
+; block outbound network except localhost
+(deny network-outbound)
+(allow network-outbound (remote ip "localhost:11434"))
+(allow network-outbound (remote ip "localhost:8001"))
+(allow network-outbound (remote unix-socket))
+
+; block writes outside scratch dir
+(deny file-write* (subpath "/"))
+(allow file-write* (subpath "/private/tmp/agent_a"))
+(allow file-write* (subpath (param "PROJECT_DIR")))
+(allow file-write* (literal "/dev/null"))
+(allow file-write* (subpath "/dev/fd"))
