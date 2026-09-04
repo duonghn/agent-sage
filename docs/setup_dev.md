@@ -1,19 +1,16 @@
 # Dev Setup
 
 ```bash
-# install uv (if needed)
+# Requires 
+ollama run mistra
 brew install uv
-
-# setup
 uv venv
-uv pip install -e ".[dev]"
+uv sync --dev
 
 # run
-source .venv/bin/activate
-python src/agent_sage/main.py
-```
+uv run src/agent_sage/main.py
 
-Requires Ollama running with Mistral:
-```bash
-ollama run mistral
+# run with sandbox, .venv added to sandbox
+sandbox-exec -f sandbox/agent_a.sb -D PROJECT_DIR=$(pwd) \ -D VENV_DIR=$(pwd)/.venv \
+  .venv/bin/python src/agent_sage/main.py
 ```
